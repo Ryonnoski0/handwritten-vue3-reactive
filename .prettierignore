@@ -1,0 +1,12 @@
+/.nuxt/**
+/node_modules/**
+/dist/**
+/.output/**
+/public/**
+/html/**
+/.data/**
+/.nitro/**
+/.cache/**
+/.local/**
+**/*.svg
+**/*.sh
