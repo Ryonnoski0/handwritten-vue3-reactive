@@ -1,23 +1,6 @@
-import { isObject, isReactive } from '@vue/shared';
-
+import { isObject } from '@vue/shared';
+import { ReactiveFlags, mutableHandlers } from './baseHandler';
 const reactiveMap = new WeakMap();
-
-const mutableHandlers: ProxyHandler<any> = {
-  get(target, key, receiver) {
-    //如果已经被代理过了，返回true配合createReactiveObject验证是否已被代理
-    if (key === ReactiveFlags.IS_REACTIVE) {
-      return true;
-    }
-  },
-  set(target, key, value, receiver) {
-    return true;
-  },
-};
-
-//记录代理的结果的枚举
-enum ReactiveFlags {
-  IS_REACTIVE = '__v_isReactive',
-}
 
 function createReactiveObject(target: any) {
   // 响应式对象必须是对象
